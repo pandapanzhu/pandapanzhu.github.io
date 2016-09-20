@@ -1,5 +1,5 @@
 ﻿# Site settings
-name: pandapan`s blog
+name: 从菜鸟至今
 email: 375160958@qq.com
 author: Panda Pan
 url: https://pandapanzhu.github.io/
@@ -8,8 +8,8 @@ github: https://github.com/pandapanzhu/
 baseurl: ""
 description: 欢迎来到这儿！
 meta_description: This is panda pan`s blog
-motto: It's our wits that make us men.
-banner: 学而不思则罔，思而不学则殆。
+motto: I hope I have something for you.
+banner: Life is a process of constant exploration, isn't it?
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
