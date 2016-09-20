@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  如何使用LessOrMore这个Jekyll模版
-date:   2016-08-27 01:08:00 +0800
+date:   2016-09-21 00:08:01 +0800
 categories: document
 tag: 教程
 ---
@@ -12,6 +12,7 @@ tag: 教程
 
 致谢
 ====================================
++ 感谢模板[原作者](http://www.hifreud.com/LessOrMore/)提供的模板。
 + 感谢[Less官网]()的样式，本Jekyll框架的样式都是基于Less官网的样式直接拷贝过来的。只是重构了JS，并且加入了Jekyll语法而已。
 + 感谢[Github](https://github.com/)提供的代码维护和发布平台
 + 感谢[Jekyll](https://jekyllrb.com/)团队做出如此优秀的产品
@@ -24,7 +25,7 @@ tag: 教程
 下载
 ------------------------------------
 
-使用git从[LessOrMore](https://github.com/luoyan35714/LessOrMore.git)主页下载项目
+使用git从[该模板](https://github.com/pandapanzhu/pandapanzhu.github.io)主页下载项目
 
 {% highlight bash %}
 git clone https://github.com/luoyan35714/LessOrMore.git
@@ -93,20 +94,6 @@ jekyll server
 打开浏览器并输入URL`http://localhost:4000/`,回车。
 
 
-为什么重复造轮子
-====================================
-
-很明显，我在重复造轮子。在13年接触到GIT，14年末接触到Jekyll，然后搭建了自己的博客，当时是选用了[JekyllThemes](http://jekyllthemes.org/)上的[Solar](https://github.com/mattvh/solar-theme-jekyll)主题，一直到现在。不过中间一直感觉页面风格还是偏暗，阅读不方便。并且有一些小的细节做的不是很好。在页面的跨平台浏览上有一些瑕疵。并且不区分一级标题和二级标题，导致没有重点强调。诸如此类，用了2年，用的越多，越发吃力，中间就一直在寻找新的能够让我一眼认定的主题。
-
-虽然设计好看的主题很多。但是真正适合拿来做博客的却不多。中间一直没有找到合适的主题。直到有一天看到Less官网的主题之后，豁然觉得这就是我的博客想要的样子。简单而又不平凡。所以就决定了要把博客迁移到这个主题，然后拿了两天晚上来把这个主题做出来。
-
-重复造了轮子，但是这个是迄今为止自己觉得最适合我的博客的轮子，所以是值得的！
-
-关于作者
-====================================
-
-热爱开源，热爱折腾的Java程序猿。更多个人信息和联系方式可以参照[我的简介](http://www.hifreud.com/Resume.io/)。
-
 关于打赏
 ====================================
 
@@ -117,8 +104,4 @@ jekyll server
 支付宝
 ----------------
 
-<img src="{{ '/styles/images/zhifubao.PNG' | prepend: site.baseurl }}" alt="支付宝二维码付款给Freud" width="310" />
-
-微信
-----------------
-![微信二维码付款给Freud]({{ '/styles/images/weixin.png' | prepend: site.baseurl }})
+<img src="{{ '/styles/images/zhifubao.jpg' | prepend: site.baseurl }}" alt="支付宝二维码" width="310" />
