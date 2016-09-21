@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  如何使用LessOrMore这个Jekyll模版
-date:   2016-09-21 00:08:01 +0800
+date:   2016-09-20 22:08:01 +0800
 categories: document
 tag: 教程
 ---
