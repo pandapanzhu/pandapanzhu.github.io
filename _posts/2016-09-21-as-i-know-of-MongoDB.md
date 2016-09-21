@@ -196,6 +196,11 @@ Mybatis改操作
     }  
 
 至此，以后有深入了解在回来补充！
+参考文献
+
+- [MongoDB基本用法](http://javacrazyer.iteye.com/blog/1840042)
+- [MongoDB——基础入门](http://javacrazyer.iteye.com/blog/1840042)
+
 
 
 
