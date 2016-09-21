@@ -102,8 +102,100 @@ MongoDB是目前比较流行的一种非关系型数据库（NoSql），他的�
 	D:\Program Files\MongoDB\Server\3.0\bin>
 4. 在DOS命令窗口输入：net start MongoDB 即可。
 
+在Mybatis中使用MongoDB操作
+===
 
+MyBatis增操作
+--
 
+**注意：** 在Mybatis增加操作时，要先将数据存放在对应的class中，再将这个class存放在MongoDB中，这样才能在以后的操作中使用对应的操作语句。
+	
+	   public void addData() {  
+        DBCollection coll = MongoUtil.getColl("wujintao");  
+        BasicDBObject doc = new BasicDBObject();  
+        doc.put("name", "MongoDB");  
+        doc.put("type", "database");  
+        doc.put("count", 1);  
+  
+        coll.insert(doc);  
+		//插入时，需要将数据加到doc中才能在MongoDB中找到对应的class
+        // 设定write concern，以便操作失败时得到提示  
+        coll.setWriteConcern(WriteConcern.SAFE);  
+    }  
+    
+
+Mybatis查操作
+--
+	private MongoOperations mongo;
+
+	
+	DBObject query =new BasicDBObject();
+	query.put("createdTime",new BasicDBObject(QueryOperators.GTE, beginTime).append(QueryOperators.LTE, endTime));
+	//其中GTE代表>=,LET代表<=
+	query.put("url",url);
+	//查询是可以拼接的，相当于MySQL中的AND
+	
+	
+	//模糊查询,模糊查询是根据java正则表达式来匹配的
+	Pattern pattern=Pattern.compile(url);//url从后台传过来的
+	query.put("url",url);
+	
+	
+	long count=mongo.getCollection(COLLECTION).count(query);
+	//得到上述query查询到的数据的数量
+
+	DBCursor cursor = mongo.getCollection("wujintao").sort(new BasicDBObject("Id", -1)).find(query).skip(page.getStartItem()).limit(page.getPageSize()); 
+	//分页,并根据id顺序显示
+	
+	
+如果只想查询数据表中一部分数据，可以定义一个buildFields函数，将需要查询的数据写出来，相当于MySQL中的SELECT id,name,,role from ***;
+	public static DBObject buildFields(String... fieldNames) {
+        DBObject fields = new BasicDBObject();
+        for (String fn : fieldNames) {
+            fields.put(fn, 1);
+        }
+        return fields;
+    }
+
+	//调用上述函数
+	 DBObject fields =buildFields("id", "name", "role");
+	
+	DBCursor cursor = mongo.getCollection(COLLECTION).find(query, fields).sort(new BasicDBObject("id", -1)).skip(page.getStartItem()).limit(page.getPageSize());
+
+最后将查询到数据放到List中
+
+	List<RepeatArticle> result = new LinkedList<RepeatArticle>();
+        while (cursor.hasNext()) {
+            DBObject o = cursor.next();
+            result.add(toEntity(o, RepeatArticle.class));
+        }
+        return result;
+	
+	
+Mybatis删操作
+---
+
+	public void delete() {  
+        BasicDBObject query = new BasicDBObject();  
+        query.put("name", "xxx");  
+        // 找到并且删除，并返回删除的对象  
+        DBObject removeObj = mongo.getCollection("wujintao").findAndRemove(query);  
+        System.out.println(removeObj);  
+    }  
+
+Mybatis改操作
+---
+
+	public void update() {  
+        BasicDBObject query = new BasicDBObject();  
+        query.put("name", "liu");  
+        DBObject stuFound = mongo.getCollection("wujintao").findOne(query);  
+        stuFound.put("name", stuFound.get("name") + "update_1");  
+		//stuFound.get("name") + "update_1" 为修改后的name
+        mongo.getCollection("wujintao").update(query, stuFound);  
+    }  
+
+至此，以后有深入了解在回来补充！
 
 
 
