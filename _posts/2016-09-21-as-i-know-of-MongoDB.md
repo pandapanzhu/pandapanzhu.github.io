@@ -199,7 +199,7 @@ Mybatis改操作
 参考文献
 
 - [MongoDB基本用法](http://javacrazyer.iteye.com/blog/1840042)
-- [MongoDB——基础入门](http://javacrazyer.iteye.com/blog/1840042)
+- [MongoDB——基础入门](http://www.cnblogs.com/sheepswallow/p/4863578.html)
 
 
 
