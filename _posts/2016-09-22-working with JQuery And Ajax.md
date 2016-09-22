@@ -111,6 +111,7 @@ data
 当我们要上传一个表单时，我们可以先将表单序列化,将其序列化**字符串**形式，
 
 	var data=("form").serialize();
+
 或者，我们还可以将表单序列化成serializeArray(),转换成**JSON**格式
 
 	var jsonData = $("form").serializeArray();
