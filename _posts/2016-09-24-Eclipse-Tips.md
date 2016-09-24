@@ -51,6 +51,7 @@ java智能提示
 导出配置
 ---
 当我们安装新的系统或使用新的电脑的时候，我们不想再从新设置我们的Eclipse，我们可以这样做。
+
 - 点击File 选择 Export ，打开导出对话框。
 - 在弹出的对话框中选择 Preference项目，然后点击Next。
 - 输入一个文件路径后，就可以点击Finish保存了。
@@ -61,6 +62,9 @@ java智能提示
 常用快捷键
 ==
 
+编辑
+--
+
 - Ctrl+1 快速修复（最经典的快捷键,就不用多说了，可以解决很多问题，比如import类、try catch包围等）
 - Ctrl+Shift+F 格式化当前代码
 - Ctrl+Shift+O 组织类的import导入（既有Ctrl+Shift+M的作用，又可以帮你去除没用的导入，很有用）
@@ -70,134 +74,40 @@ java智能提示
 - Ctrl+Alt+↓\↑ 复制当前行到下一行或者上一行（复制增加）
 - Shift+Enter 在当前行的下一行插入空行（这时鼠标可以在当前行的任一位置,不一定是最后）
 - Ctrl+/ 注释当前行,再按则取消注释
+
+选择和移动
+--
+
 - Alt+Shift+↑ 选择封装元素
 - Ctrl+←\→ 光标移到左边单词的开头或者末尾
+
+搜索
+--
+- Ctrl+Shift+H  查看某个函数被谁调用。
+- Ctrl+K 参照选中的Word快速定位到下一个（如果没有选中word，则搜索上一次使用搜索的word）
 - Ctrl+Shift+R 搜索工程中的文件
-	
+- Ctrl+Shift+T 搜索类（包括工程和关联的第三jar包）
+- Alt+← 前一个编辑的页面
+- Alt+→ 下一个编辑的页面（当然是针对上面那条来说了）
 
-
-get()和post()
--
-- get()		-->从指点的源请求数据
-- post()	-->向指定的资源提交要处理的数据
-
-**注意：**post()也可以从服务器端获取数据，但不会缓存数据，常用于连同请求一起发送数据
-
-
-data
+Debug
 --
-当我们要上传一个表单时，我们可以先将表单序列化,将其序列化**字符串**形式，
 
-	var data=("form").serialize();
+- F5 单步跳入
+- F6 单步跳过
+- F7 单步返回
+- F8 继续
+- Ctrl+Shift+B 在当前行设置或者去掉断点
+- Ctrl+R 运行至行(超好用，可以节省好多的断点)
 
-或者，我们还可以将表单序列化成serializeArray(),转换成**JSON**格式
-
-	var jsonData = $("form").serializeArray();
-	获取数据时，就直接从json中获取，jsonData[0].name
-
-下面给一个详细的例子：
+其他
 --
-	
-	$(function() {
-		$("#newProject").click(function() {
-			location.href = "${basePath}rest/page/newProject";
-		});
-		
-		$("#query_btn").click(function(){
-			var condition = $("#condition").val();  //工程名字，模糊查询
-			var pageSize = $("#numsize").val();		//一页显示几条数据
-			QueryPro(1,pageSize,condition);			//调用QueryPro
-		});
-		})
-	
-	function  QueryPro(pageNum,pageSize,condition){
-		var sendData = {
-				name:condition,
-				pageNum:pageNum,
-				pageSize:pageSize
-			}
-		$.ajax({
-			type:"post",
-			data:sendData,
-			dataType:"json",
-			url:"${basePath }rest/project/QueryProject",
-			//传值成功后，根据后台的responsebody接受传出来的数据
-			success:function(data){
-			//total总的数据条数
-				$("#total").html(data.total);
-				var html = "";
-			//list为page当中从数据库查询到的数据，后台Page是使用github的PageInfo
-				var list = data.list;
-				if(list.length>0){
-			//拼接td
-				for(var i=0;i<list.length;i++)
-					{
-						html += '<tr>' + 
-						'<td>' + ((data.pageNum-1)*pageSize+i+1) + '</td>' +
-						'<td>' + list[i].name + '</td>' +
-						'<td>' + list[i].fr + '</td>' +
-						'<td>' + list[i].gldw + '</td>' +
-						'<td>' + list[i].sjdw + '</td>' +
-						'<td>' + list[i].jldw + '</td>' +
-						'<td>' + list[i].sgdw + '</td>' +
-						'<td>' + list[i].yxdw + '</td>' +
-						'<td><a href="javascript:;" style="color:#6EC30B" onclick="QueryByid(this);" data-id="'+list[i].id+'">查看</a>&nbsp;|&nbsp;<a href="javascript:;" style="color:#D9534F" data-id="'+list[i].id+'">删除</a></td>'+
-					'</tr>';
-					}//end for
-				}else{
-					alert("没有搜索到您要查询的信息");
-				}
-				
-				// 分页标签，显示上一页和下一页
-				if(list.length>0){
-				var html2="<li><button style='width:60px;text-align: center' id='prepage'>上一页</button>"+"</li><li id='firstPage'><button>1</button></li>";
-				for(var i=1;i<data.pages;i++)
-					{
-					 html2+= '<li id=btn'+(i+1) +'><button>'+(i+1)+'</button></li>';
-					}
-				html2+='<li><button style="width:60px;text-align: center" id="nextpage">下一页</button></li>';
-				}
-				
-				
-				$("#pageul").empty().append(html2);
-				$("#mytable tbody").empty().append(html);
-				
-				//上一页
-				$("#prepage").off().click(function(){
-					if (data.isFirstPage == true){
-						alert("当前已是首页");
-					} else {
-					QueryPro(data.pageNum-1,data.pageSize,condition);	
-					}
-				});
-				//下一页
-				$("#nextpage").off().click(function(){
-					if (data.isLastPage == true){
-						alert("当前已是尾页");
-					}else{
-					QueryPro(data.pageNum+1,data.pageSize,condition);
-					}
-				});
-				//第一页
-				$("#firstPage").off().click(function(){
-					if (data.isFirstPage == true){
-						alert("当前已是首页");
-					} else {
-					QueryPro(1,data.pageSize,condition);	
-					}
-				});
-				//第2,3,4.....页 注意闭包问题
-				for(var i=1;i<data.pages;i++)
-				{
-					(function(arg){
-						$("#btn"+(arg)).off().click(function(){
-							QueryPro(arg,data.pageSize,condition);	
-						});
-					})(i+1);
-				}
-			}
-		});//end ajax
-	}
-	
 
+- Alt+Shift+R 重命名方法名、属性或者变量名 （是我自己最爱用的一个了,尤其是变量和类的Rename,比手工方法能节省很多劳动力）
+- Alt+Shift+Z 重构的后悔药（Undo）
+- Ctrl+↑\↓ 文本编辑器 上滚行\下滚行
+- Ctrl+M 最大化当前的Edit或View （再按则反之）
+- Ctrl+W 关闭当前Editer（windows下关闭打开的对话框也是这个，还有qq、旺旺、浏览器等都是）
+- Ctrl+L 文本编辑器 转至行
+- Ctrl+O 快速显示 OutLine（不开Outline窗口的同学，这个快捷键是必不可少的）
 
