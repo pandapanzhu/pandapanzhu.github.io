@@ -17,7 +17,7 @@ tag: 教程
 Java开发怎么能不知道怎么创建maven项目，博主创建maven项目遇到一些小难题，在此记下。
 
 
-Update DateTime 2016.09.25
+2016.09.25
 ==
 
 新建Maven项目
@@ -48,10 +48,10 @@ maven项目创建有很多种方法。
 9. 在pom.xml中添加完依赖后，我们就可以部署和测试这个mavenTest。
 
 
-Update DateTime 2016.09.26
+2016.09.26
 ==
 
-创建SSM（Spring+SpringMVC+Mybatis）项目	
+创建SSM项目	
 --
 
 1. 先配置pom.xml文件
@@ -231,5 +231,11 @@ Update DateTime 2016.09.26
 6. 配置mybatis-config.xml文件（可不选）
 7. 配置mysqldb.properties文件
 8. 完成项目框架。
+
+参考文件
+==
+	
+- [基于maven的ssh框架一步一步搭建](http://www.open-open.com/lib/view/open1405494785437.html)
+- [利用maven/eclipse搭建ssm(spring+spring mvc+mybatis)](http://www.tuicool.com/articles/7n2M3qI)
 	
 	
