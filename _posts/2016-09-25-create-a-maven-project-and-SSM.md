@@ -1,7 +1,7 @@
 ---
 layout: post
 
-title:  如何创建一个maven项目
+title:  如何创建一个maven项目并基于Maven创建SSM框架
 
 date:   2016-09-25 22:32:00 +0800
 
@@ -62,125 +62,121 @@ Update DateTime 2016.09.26
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
 		http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  		<modelVersion>4.0.0</modelVersion>
-  		<groupId>com.test.maventest2</groupId>
-  		<artifactId>maventest2</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  		<packaging>war</packaging>
-  
-  		<properties>
+  			<modelVersion>4.0.0</modelVersion>
+  			<groupId>com.test.maventest2</groupId>
+  			<artifactId>maventest2</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  			<packaging>war</packaging>
+  			<properties>
   			<!-- Spring 版本号 -->
   			<spring.version>4.0.2.RELEASE</spring.version>
-  		</properties>
-  
-    	<dependencies>
-    	<!-- Spring  核心jar包-->
-    		<dependency>
-    			<groupId>org.springframework</groupId>
-    			<artifactId>spring-core</artifactId>
-    			<version>${spring.version}</version>
-    		</dependency>
-    		
-    		<dependency>
-    			<groupId>org.springframework</groupId>
-    			<artifactId>spring-web</artifactId>
-    			<version>${spring.version}</version>
-    		</dependency>
-    		<dependency>
-    			<groupId>org.springframework</groupId>
-    			<artifactId>spring-tx</artifactId>
-    			<version>${spring.version}</version>
-    		</dependency>
-    		<dependency>
-    			<groupId>org.springframework</groupId>
-    			<artifactId>spring-jdbc</artifactId>
-    			<version>${spring.version}</version>
-    		</dependency>
-    	
-    		<dependency>
-            	<groupId>org.springframework</groupId>
-            	<artifactId>spring-webmvc</artifactId>
-            	<version>${spring.version}</version>
-       	 	</dependency>
-    		<dependency>
-            	<groupId>org.springframework</groupId>
-            	<artifactId>spring-aop</artifactId>
-            	<version>${spring.version}</version>
-       		</dependency>
-    		<dependency>
-            	<groupId>org.springframework</groupId>
-            	<artifactId>spring-context-support</artifactId>
-            	<version>${spring.version}</version>
-       	 	</dependency>
-        	<dependency>
-            	<groupId>org.springframework</groupId>
-            	<artifactId>spring-test</artifactId>
-            	<version>${spring.version}</version>
-        	</dependency>
-        	
-        	<!-- 添加MyBatis依赖 -->
-        	<dependency>
-            	<groupId>org.mybatis</groupId>
-            	<artifactId>mybatis</artifactId>
-            	<version>3.3.0</version>
-        	</dependency>
-        	
-        	<!-- JDBC连接依赖 -->
-        	<dependency>
-            	<groupId>mysql</groupId>
-            	<artifactId>mysql-connector-java</artifactId>
-            	<version>5.0.8</version>
-        	</dependency>
-    	        <!-- 阿里巴巴的数据库连接池 -->
-        	<dependency>
-            	<groupId>com.alibaba</groupId>
-            	<artifactId>druid</artifactId>
-            	<version>1.0.16</version>
-        	</dependency>
-        	<!-- spring结成mybatis -->
-        	<dependency>
-            	<groupId>org.mybatis</groupId>
-            	<artifactId>mybatis-spring</artifactId>
-            	<version>1.2.3</version>
-        	</dependency>
-        	<!-- jsp标准标签库 -->
-        	<dependency>
-            	<groupId>javax.servlet</groupId>
-            	<artifactId>jstl</artifactId>
-            	<version>1.2</version>
-        	</dependency>
-        	<dependency>
-            	<groupId>log4j</groupId>
-            	<artifactId>log4j</artifactId>
-            	<version>1.2.16</version>
-        	</dependency>
-        	<dependency>
-            	<groupId>org.slf4j</groupId>
-            	<artifactId>slf4j-api</artifactId>
-            	<version>1.6.1</version>
-        	</dependency>
-        	<dependency>
-            	<groupId>org.slf4j</groupId>
-            	<artifactId>slf4j-nop</artifactId>
-            	<version>1.6.4</version>
-        	</dependency>
+  			</properties>
 
-        	<dependency>
-            	<groupId>junit</groupId>
-            	<artifactId>junit</artifactId>
-            	<version>4.7</version>
-            	<scope>test</scope>
-        	</dependency>
+   			<dependencies>
+    			<!-- Spring  核心jar包-->
+    			<dependency>
+    				<groupId>org.springframework</groupId>
+    				<artifactId>spring-core</artifactId>
+    				<version>${spring.version}</version>
+    			</dependency>
+    			<dependency>
+    				<groupId>org.springframework</groupId>
+    				<artifactId>spring-web</artifactId>
+    				<version>${spring.version}</version>
+    			</dependency>
+    			<dependency>
+    				<groupId>org.springframework</groupId>
+    				<artifactId>spring-tx</artifactId>
+    				<version>${spring.version}</version>
+    			</dependency>
+    			<dependency>
+    				<groupId>org.springframework</groupId>
+    				<artifactId>spring-jdbc</artifactId>
+    				<version>${spring.version}</version>
+    			</dependency>
+    			<dependency>
+            		<groupId>org.springframework</groupId>
+            		<artifactId>spring-webmvc</artifactId>
+            		<version>${spring.version}</version>
+       	 		</dependency>
+    			<dependency>
+            		<groupId>org.springframework</groupId>
+            		<artifactId>spring-aop</artifactId>
+            		<version>${spring.version}</version>
+       			</dependency>
+    			<dependency>
+					<groupId>org.springframework</groupId>
+            		<artifactId>spring-context-support</artifactId>
+            		<version>${spring.version}</version>
+       	 		</dependency>
+        		<dependency>
+            		<groupId>org.springframework</groupId>
+            		<artifactId>spring-test</artifactId>
+            		<version>${spring.version}</version>
+        		</dependency>
         	
-  			<dependency>
-  				<groupId>javax.servlet</groupId>
-  				<artifactId>servlet-api</artifactId>
-  				<version>3.0-alpha-1</version>
-  			</dependency>
+        		<!-- 添加MyBatis依赖 -->
+        		<dependency>
+            		<groupId>org.mybatis</groupId>
+            		<artifactId>mybatis</artifactId>
+            		<version>3.3.0</version>
+        		</dependency>
+        	
+        		<!-- JDBC连接依赖 -->
+        		<dependency>
+            		<groupId>mysql</groupId>
+            		<artifactId>mysql-connector-java</artifactId>
+            		<version>5.0.8</version>
+        		</dependency>
+    	        <!-- 阿里巴巴的数据库连接池 -->
+        		<dependency>
+            		<groupId>com.alibaba</groupId>
+            		<artifactId>druid</artifactId>
+            		<version>1.0.16</version>
+        		</dependency>
+        		<!-- spring结成mybatis -->
+        		<dependency>
+            		<groupId>org.mybatis</groupId>
+            		<artifactId>mybatis-spring</artifactId>
+            		<version>1.2.3</version>
+        		</dependency>
+        		<!-- jsp标准标签库 -->
+        		<dependency>
+            		<groupId>javax.servlet</groupId>
+            		<artifactId>jstl</artifactId>
+            		<version>1.2</version>
+        		</dependency>
+        		<dependency>
+            		<groupId>log4j</groupId>
+            		<artifactId>log4j</artifactId>
+            		<version>1.2.16</version>
+        		</dependency>
+        		<dependency>
+            		<groupId>org.slf4j</groupId>
+            		<artifactId>slf4j-api</artifactId>
+            		<version>1.6.1</version>
+        		</dependency>
+        		<dependency>
+            		<groupId>org.slf4j</groupId>
+            		<artifactId>slf4j-nop</artifactId>
+            		<version>1.6.4</version>
+        		</dependency>
+
+        		<dependency>
+            		<groupId>junit</groupId>
+            		<artifactId>junit</artifactId>
+            		<version>4.7</version>
+            		<scope>test</scope>
+        		</dependency>
+  				<dependency>
+  					<groupId>javax.servlet</groupId>
+  					<artifactId>servlet-api</artifactId>
+  					<version>3.0-alpha-1</version>
+  				</dependency>
   			</dependencies>
-      		<build>
-        		<finalName>maven-ssm-web</finalName>
-    		</build>
+      			<build>
+        			<finalName>maven-ssm-web</finalName>
+    			</build>
 		</project>
 
 2. 配置web.xml文件
