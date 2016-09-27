@@ -1,0 +1,93 @@
+---
+layout: post
+
+title:  我所知道的Java正则表达式
+
+date:   2016-09-27 22:32:00 +0800
+
+categories: document
+
+tag: 教程
+---
+
+* content
+{:toc}
+
+
+博主以前在某个单位实习的时候，需要用到Java正则表达式，所以特意去学习了一下，这里写一篇博文，以作记录。
+
+
+
+
+常用的Java正则表达式符号
+--
+
+1. \d{1,2}-->[0-9]{1,2}--->至少1个数字，但不超过两个。
+
+2. \D{1,2}-->[^0-9]{1,2}--->至少一个非数字，但不超过两个。
+
+3. \s--->空白符号。\S--->非空白符号
+
+4. \w{1，2}-->[a-zA-Z0-9]{1,2}--->1-2个字符。\W{3，}至少3个非字符。
+
+5. ^  ---> 为显示开头的一个开头符号 
+	
+		^java-->条件限制为以Java为开头字符
+6. $  --->限制结尾
+
+		java$-->条件为限制以Java结尾的字符
+7. .(小数点)--->条件限制为除/n（换行）以外的任意一个单独字符。
+
+		java..--->java后除换行外任意两个字符
+
+8. [a-z][A-Z][a-zA-Z]--->在小写/大写/大写或小写范围的一个字符。
+
+出现次数的表示
+---
+
+1. * --->0次以上
+2. + --->1次以上
+3. ? --->0次或1次以上
+4. {3，5}--->出现3次但不超过5次
+5. A|B--->A或B
+
+	例子：
+
+		A*		--->A出现0次以上
+		.+		--->出现1次以上的任意字符（ababac）将会匹配到ab(我猜的)
+		A.?B	--->A和B之间出现0次或1次以上的任意字符
+		
+常用的匹配模式
+---
+当我们使用Pattern.compile	函数时，可以加入一些控制正则表达式的匹配行为的参数：
+
+Pattern pattern= Pattern.compile(String regex, int flag)
+
+其中flag的取值可以如下：
+
+- Pattern.CASE_INSENSITIVE(?i) --->忽略大小写进行匹配。想要对Unicode忽略大小写匹配，只要将UNICODE_CASE与这个标志合起来就行了。
+- Pattern.COMMENTS(?x)--->忽略(正则表达式里的)空格字符(译者注：不是指表达式里的"//s"，而是指表达式里的空格，tab，回车之类)。
+- Pattern.DOTALL(?s)--->表达式'.'可以匹配任意字符，包括表示一行的结束符。默认情况下，表达式'.'不匹配行的结束符。
+- Pattern.UNICODE_CASE()--->在这个模式下，如果你还启用了CASE_INSENSITIVE标志，那么它会对Unicode字符进行大小写不明感的匹配。默认情况下，大小写不敏感的匹配只适用于US-ASCII字符集。
+
+代码演示
+---
+	String str="<a href="/index.xml/">主页</A>"
+	String strs=null	//strs用于返回字符串
+	public static void main(string[] arg){
+		String regex="="/(.*)/">(.*)</a>"
+		Pattern pattern=Pattern.compile(regex,Pattern.CASE_INSENSITIVE);//忽略大小写
+		Matcher matcher=pattern.matcher(str);
+		while(matcher.find){//如果匹配成功
+		strs=matcher.group(1)//返回第一个匹配-->index.xml
+		strs=matcher.replaceAll("test")//匹配到从“=”到末尾，将其替换成test
+				//最后结果为：<a hreftest
+		}
+	}
+
+
+Java正则的功用还有很多，事实上只要是字符处理，就没有正则做不到的事情存在。当然，正则解释时还是比较耗时间的。
+
+
+
+
