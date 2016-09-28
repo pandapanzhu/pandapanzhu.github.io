@@ -13,6 +13,9 @@ tag: 教程
 
 作为开发（不管前后台），使用到JQuery是必不可少的。
 
+${pageContext.request.contextPath}等价于<%=request.getContextPath()%>，
+表示当前项目的路径。
+
 基础
 ===
 
@@ -221,5 +224,121 @@ data
 		});//end ajax
 	}
 	
+
+在JS中循环取出Map
+===
+
+data是从后台得到的map,在AJAX中通过success方法回调。
+
+- 第一种方法
+
+		var html='';//拼接html
+		for( var key in data){
+		html+='<option value="'+key+'">+data[key]+'</option>'
+		//但当key为undefined时，这个方法就行不通了。
+		}
+- 第二种方法
+		
+		$.each(data,function(key,value){
+		console.log("key:"+key+",value:"+value);
+		})
+
+	**建议使用第二种方法**
+
+- 在js中遍历list
+
+	for(var i,i<list.length;i++){
+		value=list[i].name
+	}
+
+在JSTL中循环取出list,map,set
+===
+
+一阶Map<String,Object>
+--
+
+	<c:forEach items="${map}" var="item">
+		Map的键：${item.key}
+		Map的值：${item.value}
+	</c:forEach>
+
+二阶Map<String,Map<String,Object>>
+--
+	<c:forEach items="${map}" var="item">
+		Map的键：${item.key}
+		第二阶Map:<c:forEach item="${item.value}" var="items">
+		第二阶Map的键：${items.key}
+		第二阶Map的值：${items.value}
+		</c:forEach>
+	</c:forEach>
+
+Map中包含了多个List
+--
+	<c:forEach item="${map.List}" var="item">
+		<tr>
+			<td>${item.name}</td>
+			<td>${item.password}</td>
+		<tr>
+	<c:forEach>
+
+遍历list与遍历一阶Map类似。
+---
+	<c:forEach items="${userList}" var="item">
+		<tr>
+			<td>${item.username}</td>
+			<td>${item.username}</td>
+		</tr>
+	</c:forEach>
+
+遍历Set
+---
+	<c:forEach item="${set}" var="item">
+		<
+		
+js遍历JSON字符串
+===
+
+- 可以同遍历Map那样
+		
+		for(var i in data){
+			alert(i);
+			alert(data[i]);
+			alert("name:"+data[i].name+",age:"+data[i].age);
+		}
+
+	或者
+
+		for(var i = 0; i < data.length; i++){
+   			alert(data[i].name + " " + data[i].password);
+		}
+
+- 如果是JSONArray,可以在外面套一层for循环
+
+		var jsonarray =yourarray;
+			for(var i =0;i<jsonarray.length;i++){
+				var jsonobj = jsonarray[i];
+			for(var x in jsonobj){
+				document.write(x+"="+jsonobj[x]);
+			}
+		}
+
+	或者
+
+		<script type="text/javascript">  
+			function text(){  
+ 				 var json = {"options":"[{/"text/":/"王家湾/",/"value/":/"9/"},{/"text/":/"李家湾/",/"value/":/"10/"},{/"text/":/"邵家湾/",/"value/":/"13/"}]"}   
+  				json = eval(json.options)  
+  				for(var i=0; i<json.length; i++)  
+  				{  
+     				alert(json[i].text+" " + json[i].value)  
+  				}  
+			}  
+		</script>  
+
+	**json = eval(json.options)**
+
+
+
+
 
 
