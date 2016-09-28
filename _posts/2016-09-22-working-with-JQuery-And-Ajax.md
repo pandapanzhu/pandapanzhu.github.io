@@ -10,7 +10,10 @@ tag: 教程
 {:toc}
 
 
-LastUpdate:2016-09-22
+
+CreateTime:2016-09-22
+
+updateTime:2016-09-28
 
 作为开发（不管前后台），使用到JQuery是必不可少的。
 
