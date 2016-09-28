@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  working with JQuery and Ajax
-date:   2016-09-22 08:32:00 +0800
+date:   2016-09-28 08:32:00 +0800
 categories: document
 tag: 教程
 ---
@@ -10,6 +10,7 @@ tag: 教程
 {:toc}
 
 
+LastUpdate:2016-09-22
 
 作为开发（不管前后台），使用到JQuery是必不可少的。
 
