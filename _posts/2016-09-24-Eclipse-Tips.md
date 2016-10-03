@@ -3,7 +3,7 @@ layout: post
 title:  Eclipse tips
 date:   2016-09-24 12:32:00 +0800
 categories: document
-tag: 教程
+tag: 学习笔记
 ---
 
 * content

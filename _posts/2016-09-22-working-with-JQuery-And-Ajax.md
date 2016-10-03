@@ -3,7 +3,7 @@ layout: post
 title:  working with JQuery and Ajax
 date:   2016-09-28 08:32:00 +0800
 categories: document
-tag: 教程
+tag: 学习笔记
 ---
 
 * content

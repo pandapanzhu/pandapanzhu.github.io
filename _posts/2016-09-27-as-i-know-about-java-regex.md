@@ -7,7 +7,7 @@ date:   2016-09-27 22:32:00 +0800
 
 categories: document
 
-tag: 教程
+tag: 学习笔记
 ---
 
 * content
