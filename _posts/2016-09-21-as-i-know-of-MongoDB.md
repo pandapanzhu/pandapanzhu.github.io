@@ -3,7 +3,7 @@ layout: post
 title:  浅谈我所知的MongoDB
 date:   2016-09-21 08:32:00 +0800
 categories: document
-tag: 教程
+tag: 学习笔记
 ---
 
 * content
