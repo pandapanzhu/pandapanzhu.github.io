@@ -27,12 +27,12 @@ Jenkins安装
 3. SVN、maven、MySQL这些东西就不再赘述了。可自行安装。
 4. SonarQube安装共有两个，博主安装的时候很智障的以为Jenkins能自动启动SonarQube的服务，所以只安装了Jenkins的SonarQube的插件。插件安装有两种方法，一是：在Jenkins启动之后，点击“系统管理”-->"插件管理"-->“可选插件”中搜索**SonarQube Scanner for Jenkins**，勾选后点击直接安装即可。但这种方法一般需要翻墙。能不能安装上完全看个人运气。
 第二种方法是离线安装**（推荐）**：首先下载SonarQube插件：[ https://wiki.jenkins-ci.org/display/JENKINS/SonarQube+plugin]( https://wiki.jenkins-ci.org/display/JENKINS/SonarQube+plugin)。
-如下图所示：<img alt="sonar" src="../styles/images/CIServer/sonar.png">
-然后在Jenkins的“系统管理”-->“插件管理”-->“高级”中点击上传插件，将下载好的sonar插件上传上去（一般下载后的插件名字为：sonar.hpi）。重启服务器，在插件管理-->“已安装”中可查看 SonarQube Plugin 是否存在。<img alt="sonarPlgin" src="../styles/images/CIServer/sonarPlugin.png">
+如下图所示：<img alt="sonar" src="/styles/images/CIServer/sonar.png">
+然后在Jenkins的“系统管理”-->“插件管理”-->“高级”中点击上传插件，将下载好的sonar插件上传上去（一般下载后的插件名字为：sonar.hpi）。重启服务器，在插件管理-->“已安装”中可查看 SonarQube Plugin 是否存在。<img alt="sonarPlgin" src="/styles/images/CIServer/sonarPlugin.png">
 
 5. SonarQube插件安装好了，需要在“系统管理”-->“系统设置”-->"SonarQube"进行一系列的设置。如下图：
-<img src="../styles/images/CIServer/sonarconfig.png">
-<img src="../styles/images/CIServer/sonarconfig2.png">
+<img src="/styles/images/CIServer/sonarconfig.png">
+<img src="/styles/images/CIServer/sonarconfig2.png">
 
 **注意：**
 当时博主天真的认为Jenkins只要安装SonarQube的插件就能启动SonarQube。所以很想找到不安装SonarQube的方法，但现实证明我失败了，还需继续安装SonarQube才行。
@@ -47,7 +47,7 @@ SonarQube安装
 		sonar.jdbc.url=jdbc:mysql://127.0.0.1:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
 
 3. 在安装目录中找到\bin\windows-x86-64\StartSonar.bat。运行即可。
-<img src="../styles/images/CIServer/sonarRun.jpg">
+<img src="/styles/images/CIServer/sonarRun.jpg">
 
 4.为了方便起见，我们可以安装Windows服务，让SonarQube跟随系统启动。（不推荐）
 
@@ -62,16 +62,16 @@ Jenkins配置
 
 Maven配置
 --------
-不说了，直接上图：<img src="../styles/images/CIServer/maven1.png"><img src="../styles/images/CIServer/maven2.png">
+不说了，直接上图：<img src="/styles/images/CIServer/maven1.png"><img src="/styles/images/CIServer/maven2.png">
 
 JDK配置
 ---
-<img src="../styles/images/CIServer/jdk.png">
+<img src="/styles/images/CIServer/jdk.png">
 
 SonarQube Runner配置
 ----
 博主为了偷懒，（确切的是没有找到SonarQube Runner的安装地址） 所以直接用的自动安装。
-<img src="../styles/images/CIServer/sonarRunner.png">
+<img src="/styles/images/CIServer/sonarRunner.png">
 
 邮件通知等相关信息博主是用的163的邮箱：
 
