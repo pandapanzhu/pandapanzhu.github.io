@@ -78,6 +78,43 @@ SonarQube Runner配置
 - SMTP服务器：smtp.163.com
 - 用户默认邮件后缀：@163.com
 
+构建项目
+======
+
+1. 点击新建
+----
+输入项目名称和项目类型点击OK,进入项目配置页面
+<img src="/styles/images/CIServer/goujian.png">
+
+2. 配置项目
+----
+
+1. 源码管理我是用的SVN来管理，如下图：
+<img src="/styles/images/CIServer/goujian.png">
+
+2. 构建触发器**（什么时候down源代码到本地）**：
+<img src="/styles/images/CIServer/chufaqi.png">
+
+	 第一个的意思是远程触发构建，就是访问url的方式触发构建
+
+	第二个的意思是另一个项目构建完成后，进行构建
+
+	第三个的意思是定时去构建（不论源代码是否有新的commit）
+
+	第四个略过
+
+	第五个定期去构建（有新的commit，才会触发构建）
+
+	第三个和第五个可以自己度娘一下表达式的书写。
+
+3. Build
+<img src="/styles/images/CIServer/build.png">
+
+4. 构建设置中，邮件发送看自己。
+5. 构建后操作
+<img src="/styles/images/CIServer/afterbuild.png">
+
+
 
 参考文献
 ===
