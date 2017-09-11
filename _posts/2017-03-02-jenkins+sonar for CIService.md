@@ -1,4 +1,4 @@
-* * *
+---
 
 layout: post
 
@@ -8,7 +8,8 @@ date:   2017-03-02 02:32:00 +0800
 
 categories: document
 
-## tag: 学习笔记
+tag: 学习笔记
+---
 
 *   content
 {:toc}
