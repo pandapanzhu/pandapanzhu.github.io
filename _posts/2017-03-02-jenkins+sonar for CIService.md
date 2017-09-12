@@ -40,7 +40,7 @@ tag: 学习笔记
 1.  sonarQube安装不分操作系统。直接访问[SonarQube官网:](https://www.sonarqube.org/downloads/)[https://www.sonarqube.org/downloads/](https://www.sonarqube.org/downloads/)选择版本下载就是。
 2.  下载完成，解压之后，还需修改sonar.properties文件，在安装目录的**config**文件中。博主用的是mysql数据库，所以修改大致如下：
 
-         sonar<span class="hljs-class">.jdbc</span><span class="hljs-class">.username</span>=sonar     sonar<span class="hljs-class">.jdbc</span><span class="hljs-class">.password</span>=sonar     sonar<span class="hljs-class">.jdbc</span><span class="hljs-class">.url</span>=jdbc:mysql:<span class="hljs-comment">//127.0.0.1:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance</span>
+         sonar.jdbc.username=sonar     sonar.jdbc.password=sonar     sonar.jdbc.url=jdbc:mysql: //127.0.0.1:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
 
 3.  在安装目录中找到\bin\windows-x86-64\StartSonar.bat。运行即可。
 &lt;img src="/styles/images/CIServer/sonarRun.jpg"&gt;
