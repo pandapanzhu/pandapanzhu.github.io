@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  浅谈JQuery和Ajax 
-date:   2016-09-28 08:32:00 +0800
+date:   2016-10-28 08:32:00 +0800
 categories: document
 tag: 学习笔记
 ---
