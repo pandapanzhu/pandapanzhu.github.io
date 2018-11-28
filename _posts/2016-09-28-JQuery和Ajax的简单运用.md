@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  working with JQuery and Ajax
+title:  浅谈JQuery和Ajax 
 date:   2016-09-28 08:32:00 +0800
 categories: document
 tag: 学习笔记
@@ -30,7 +30,7 @@ JQuery常用的选择器有很多种，列出几种常用的，其他可以到[�
  - $("p") 		-->标签选择器
  - $("#test") 	-->id选择器
  - $(".test")	-->class选择器
- - $(".button")	-->选取type="button"或者<button>元素
+ - $(":button")	-->选取type="button"或者<button>元素
  
 事件
 ---
@@ -52,13 +52,13 @@ JQuery常用的选择器有很多种，列出几种常用的，其他可以到[�
 
 	>$("#pageul").empty().preappend(html2);
 
-先将id为“pageul”的标签中的元素清楚，再在标签前面加入html2进去（html2是一系列标签）
+先将id为“pageul”的标签中的元素清除，再在标签前面加入html2进去（html2是一系列标签）
 
 - 向后添加
 
 	>$("#pageul").empty().append(html2);
 	
-先将id为“pageul”的标签中的元素清楚，再在标签后面加入html2进去（html2是一系列标签）
+先将id为“pageul”的标签中的元素清除，再在标签后面加入html2进去（html2是一系列标签）
 
 load方法
 ---
@@ -128,10 +128,7 @@ data
 --
 	
 	$(function() {
-		$("#newProject").click(function() {
-			location.href = "${basePath}rest/page/newProject";
-		});
-		
+			
 		$("#query_btn").click(function(){
 			var condition = $("#condition").val();  //工程名字，模糊查询
 			var pageSize = $("#numsize").val();		//一页显示几条数据
